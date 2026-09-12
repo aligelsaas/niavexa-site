@@ -17,7 +17,7 @@ navLinks.querySelectorAll('a').forEach(link =>
 // Auto-update year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Contact form — opens visitor's email client
+// Contact form — opens visitor's email client with everything pre-filled
 const form = document.getElementById('contactForm');
 const note = document.getElementById('formNote');
 form.addEventListener('submit', (e) => {
@@ -31,5 +31,5 @@ form.addEventListener('submit', (e) => {
   const body = `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\n${message}`;
 
   window.location.href = `mailto:helloniavexa@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  note.textContent = 'Opening your email app... Send the email and we\'ll get back to you within 24 hours.';
+  note.textContent = 'Opening your email app. Just hit send and we\'ll get back to you within 24 hours.';
 });
