@@ -17,16 +17,34 @@ navLinks.querySelectorAll('a').forEach(link =>
 // Auto-update year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Contact form — submit via mailto fallback (no backend needed)
+// Contact form — submit via Make.com webhook
 const form = document.getElementById('contactForm');
 const note = document.getElementById('formNote');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
+  const company = document.getElementById('company').value;
   const message = document.getElementById('message').value;
-  const subject = encodeURIComponent(`Consultation Request — ${name}`);
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-  window.location.href = `mailto:helloniavexa@gmail.com?subject=${subject}&body=${body}`;
-  note.textContent = 'Opening your email client... If nothing happens, email helloniavexa@gmail.com directly.';
+
+  note.textContent = 'Sending...';
+  note.style.color = 'var(--accent)';
+
+  fetch('https://hook.us2.make.com/ye3w50op4gc4p2aw4d7h1tpzq24gjfch', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, company, message })
+  })
+  .then(res => {
+    if (res.ok) {
+      note.textContent = '✓ Request sent! We\'ll get back to you within 24 hours.';
+      form.reset();
+    } else {
+      throw new Error('Request failed');
+    }
+  })
+  .catch(() => {
+    note.textContent = 'Something went wrong. Please email helloniavexa@gmail.com directly.';
+    note.style.color = 'var(--accent)';
+  });
 });
