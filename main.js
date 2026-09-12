@@ -17,7 +17,7 @@ navLinks.querySelectorAll('a').forEach(link =>
 // Auto-update year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Contact form — opens visitor's email client with everything pre-filled
+// Contact form — submits via FormSubmit.co (free, no signup needed)
 const form = document.getElementById('contactForm');
 const note = document.getElementById('formNote');
 form.addEventListener('submit', (e) => {
@@ -27,9 +27,31 @@ form.addEventListener('submit', (e) => {
   const company = document.getElementById('company').value;
   const message = document.getElementById('message').value;
 
-  const subject = `Consultation Request from ${name}`;
-  const body = `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\n${message}`;
+  note.textContent = 'Sending your request...';
+  note.style.color = 'var(--accent)';
 
-  window.location.href = `mailto:helloniavexa@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  note.textContent = 'Opening your email app. Just hit send and we\'ll get back to you within 24 hours.';
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('email', email);
+  formData.append('company', company);
+  formData.append('message', message);
+  formData.append('_subject', 'Consultation Request from ' + name);
+  formData.append('_template', 'table');
+
+  fetch('https://formsubmit.co/helloniavexa@gmail.com', {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => {
+    if (res.ok) {
+      note.textContent = '✓ Request sent! We\'ll get back to you within 24 hours.';
+      form.reset();
+    } else {
+      throw new Error('Failed');
+    }
+  })
+  .catch(() => {
+    note.textContent = 'Something went wrong. Please email helloniavexa@gmail.com directly.';
+    note.style.color = 'var(--accent)';
+  });
 });
