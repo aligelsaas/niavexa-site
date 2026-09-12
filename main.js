@@ -24,6 +24,7 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
   const company = document.getElementById('company').value;
   const message = document.getElementById('message').value;
 
@@ -33,6 +34,7 @@ form.addEventListener('submit', (e) => {
   const formData = new FormData();
   formData.append('name', name);
   formData.append('email', email);
+  formData.append('phone', phone);
   formData.append('company', company);
   formData.append('message', message);
   formData.append('_subject', 'Consultation Request from ' + name);
