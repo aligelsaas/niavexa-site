@@ -27,6 +27,6 @@ form.addEventListener('submit', (e) => {
   const message = document.getElementById('message').value;
   const subject = encodeURIComponent(`Consultation Request — ${name}`);
   const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-  window.location.href = `mailto:support@niavexa.com?subject=${subject}&body=${body}`;
-  note.textContent = 'Opening your email client... If nothing happens, email support@niavexa.com directly.';
+  window.location.href = `mailto:helloniavexa@gmail.com?subject=${subject}&body=${body}`;
+  note.textContent = 'Opening your email client... If nothing happens, email helloniavexa@gmail.com directly.';
 });
