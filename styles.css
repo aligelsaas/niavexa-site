@@ -104,7 +104,7 @@ a:hover { color: var(--accent); }
   border: 1px solid var(--border); transition: all var(--transition); box-shadow: var(--shadow);
 }
 .service-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.service-icon { font-size: 40px; margin-bottom: 20px; }
+.service-icon { margin-bottom: 20px; color: var(--accent); display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 12px; background: rgba(220, 60, 60, 0.08); }
 .service-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.01em; }
 .service-card p { color: var(--text-muted); font-size: 15px; margin-bottom: 20px; line-height: 1.6; }
 .service-card ul { list-style: none; }
