@@ -7,10 +7,10 @@
   --text: #f5f5f7;
   --text-muted: #9999a8;
   --text-dim: #6b6b7a;
-  --accent: #6d5efc;
-  --accent-light: #8b7fff;
-  --accent-glow: rgba(109, 94, 252, 0.4);
-  --accent2: #00d4aa;
+  --accent: #e63946;
+  --accent-light: #ff5263;
+  --accent-glow: rgba(230, 56, 70, 0.4);
+  --accent2: #f77f00;
   --border: #232330;
   --radius: 16px;
   --radius-sm: 10px;
